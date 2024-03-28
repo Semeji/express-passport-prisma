@@ -57,6 +57,11 @@ Installer les dépendances
 ```bash
   npm install ou yarn
 ```
+Initialiser prisma
+
+```bash
+  npx prisma migrate dev nom_de_migration
+```
 
 Start the server
 
