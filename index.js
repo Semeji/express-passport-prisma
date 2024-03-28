@@ -1,6 +1,5 @@
 const express = require("express");
 const passport = require("passport");
-const session = require("express-session");
 const dotenv = require("dotenv");
 const userRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
@@ -22,19 +21,12 @@ passport.deserializeUser(async (id, done) => {
   if (user) {
     done(null, user);
   }
-  done({ massage: "User doesn't exist" }, user);
+  done({ message: "L'utilisateur n'existe pas" }, user);
 });
 
 server.use(express.json());
-server.use(
-  session({
-    secret: "secret",
-    resave: false,
-    saveUninitialized: true,
-  })
-);
+
 server.use(passport.initialize());
-server.use(passport.session());
 
 server.get("/", (req, res) => {
   res.send("<h1>Bienvenue au serveur C3</h1>");
