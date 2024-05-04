@@ -7,8 +7,11 @@ CREATE TYPE "Brand" AS ENUM ('HP', 'DELL', 'IMAC');
 -- CreateTable
 CREATE TABLE "Users" (
     "id" SERIAL NOT NULL,
-    "firstname" TEXT NOT NULL,
-    "lastname" TEXT NOT NULL,
+    "nom" TEXT NOT NULL,
+    "photo" TEXT NOT NULL,
+    "telephone" TEXT NOT NULL,
+    "sexe" TEXT NOT NULL,
+    "statut" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "role" "Role" NOT NULL,

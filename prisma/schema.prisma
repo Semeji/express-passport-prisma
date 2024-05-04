@@ -15,29 +15,57 @@ datasource db {
 
 model Users {
   id Int @id @default(autoincrement())
-  firstname String
-  lastname String
+  name String
+  sexe String
+  photo String
   password String
+  telephone String
   email String @unique
+  statut String
   role Role
-  computer Computers? @relation(fields: [computerId], references: [tag])
-  computerId String?
+  postes Postes[]
+  meditation Meditation[]
+  message Message[]
+
+
 }
 
 enum Role {
-  Apprenants
-  Coachs
-  Public 
+  Admin
+  Simple 
 }
 
-model Computers {
-  tag String @id
-  brand Brand
-  users Users[]
+
+model Postes {
+  id Int  @id @default(autoincrement())
+  name String
+  date DateTime
+  texte String
+  image String
+  video String
+  users Users? @relation(fields: [id], references: [id])
+  UsersId String?
 }
 
-enum Brand {
-  HP
-  DELL
-  IMAC
+model Meditation {
+  id Int  @id @default(autoincrement())
+  name String
+  date DateTime
+  sujet String
+  image String
+  video String
+  users Users? @relation(fields: [id], references: [id])
+  UsersId String?
+}
+
+model Message {
+  id Int  @id @default(autoincrement())
+  name String
+  date DateTime
+  texte String
+  image String
+  video String
+  users Users? @relation(fields: [id], references: [id])
+  UsersId String?
+
 }
