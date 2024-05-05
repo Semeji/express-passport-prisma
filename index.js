@@ -35,4 +35,5 @@ server.get("/", (req, res) => {
 server.use("/users", userRouter);
 server.use("/auth", authRouter);
 
-server.listen(PORT, () => console.log(`Server started on ${PORT}`));
+server.listen(process.env.PORT, () => console.log(`Server started on ${PORT}`));
+
